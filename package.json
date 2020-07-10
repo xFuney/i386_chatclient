@@ -4,7 +4,9 @@
   "description": "Chat client for i386.tech's chat system.",
   "main": "index.js",
   "scripts": {
-    "test": "electron ."
+    "test": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,29 @@
   "bugs": {
     "url": "https://github.com/xFuney/i386_chatclient/issues"
   },
-  "homepage": "https://github.com/xFuney/i386_chatclient#readme"
+  "homepage": "https://github.com/xFuney/i386_chatclient#readme",
+  "devDependencies": {
+    "custom-electron-titlebar": "^3.2.2-hotfix62",
+    "electron": "^9.1.0",
+    "electron-builder": "^22.7.0",
+    "jquery": "^3.5.1",
+    "node-notifier": "^7.0.1",
+    "socket.io-client": "^2.3.0"
+  },
+  "dependencies": {
+    "custom-electron-titlebar": "^3.2.2-hotfix62",
+    "jquery": "^3.5.1",
+    "node-notifier": "^7.0.1",
+    "socket.io-client": "^2.3.0"
+  },
+  "build": {
+    "appId": "com.funey.i386chat",
+    "mac": {
+      "category": "public.app-category.social-networking"
+    },
+    "files": [
+      "**/*",
+      "build"
+    ]
+  }
 }

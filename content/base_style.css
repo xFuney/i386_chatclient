@@ -1,0 +1,51 @@
+/* credit to https://codepen.io/sajadhsm/pen/odaBdd for the styling */
+
+body {
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.msger-inputarea {
+    display: flex;
+    padding: 10px;
+    border-top: var(--border);
+  }
+  .msger-inputarea * {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 1em;
+  }
+  .msger-input {
+    flex: 1;
+  }
+  .msger-send-btn {
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background 0.23s;
+  }
+
+  .msger-chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+  }
+
+  .msger {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    width: 100%;
+    max-width: calc(100% - 28px);
+    margin: 10px;
+
+    height: 100%;
+    max-height: calc(100% - 32px);
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    line-height: 5px;
+  }

@@ -1,0 +1,46 @@
+/* Main Body */
+body {
+    background: #36393F;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Input area bounding box (bottom, behind input options) */
+.msger-inputarea {
+    background: #525760;
+}
+
+/* Text input box */
+.msger-input {
+    background: #40444b;
+    color: #ffffff;
+}
+
+/* Send message button */
+.msger-send-btn {
+    background: #6a707c;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Send message button (style when hovered over) */
+.msger-send-btn:hover {
+    background: #7e8591;
+}
+
+/* Actual chat area */
+.msger-chat {
+    background: #494d55;
+    color: #ffffff;
+}
+
+/* Applies to the entire page (minus main background) */
+.msger {
+    background: #494d55;
+    border: 3px solid #494d55;
+    border-radius: 5px;
+    box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
+}
+
+.mentioned {
+    color:#f5cb42;
+}

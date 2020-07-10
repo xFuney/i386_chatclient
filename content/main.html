@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>i386 Chat Client - Main</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="dark_theme.css">
+        <link rel="stylesheet" href="base_style.css">
+    </head>
+    <body>
+        <div id="nick" style="display:none;">Anon</div>
+        <div id="serverIP" style="display:none;">localhost</div>
+
+        <!-- credit to https://codepen.io/sajadhsm/pen/odaBdd for the styling -->
+        <section class="msger">
+            <main class="msger-chat" id="messages">
+
+            </main>
+    
+            <form class="msger-inputarea" id="inputarea">
+                <input type="text" class="msger-input" placeholder="Enter your message..." id="user_input">
+                <button type="submit" class="msger-send-btn">Send</button>
+            </form>
+        </section>
+    </body>
+
+    <script type="text/javascript" src="chat_client.js"></script>
+</html>
