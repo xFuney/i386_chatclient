@@ -1,0 +1,19 @@
+{
+  "name": "i386_chatclient",
+  "version": "0.0.1",
+  "description": "Chat client for i386.tech's chat system.",
+  "main": "index.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xFuney/i386_chatclient.git"
+  },
+  "author": "Funey <56867550+xFuney@users.noreply.github.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xFuney/i386_chatclient/issues"
+  },
+  "homepage": "https://github.com/xFuney/i386_chatclient#readme"
+}
