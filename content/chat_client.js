@@ -4,6 +4,8 @@
 var remote = require("electron").remote;
 var ipcRenderer = require("electron").ipcRenderer;
 
+var autoscroll = true;
+
 var SoundURL = {
     "WasMentioned": "https://i386.tech/juntos.mp3",
     "SuccessfulConnection": "./OpenSFX.wav",
@@ -33,9 +35,25 @@ function playAud(type) {
 
 ipcRenderer.on("connection-lost", function(event, args) {
     SendSystemMessage("Connection failure. Please restart the app.", true);
+
+    if (autoscroll) {
+        var elem = document.getElementById('messages');
+        elem.scrollTop = elem.scrollHeight;
+    }
+
     playAud("disconnected-fatal");
     document.getElementById("alerts").innerHTML += `<div class="bg_blur" id="alert"><div class="alert-box"><br \><h1 class="alert_center"> Lost connection to main server - restart app. </h1><button class="alert_centerbutton" onmousedown="const { ipcRenderer, remote } = require('electron'); this.addEventListener('click', function () { ipcRenderer.send('load_relog'); remote.app.exit(); });">OK</button></div></div>`
 })
+
+ipcRenderer.on("change-autoscroll-state", function(event, args) {
+    autoscroll = args
+    if (args) {
+        SendSystemMessage("Auto-scrolling has been ENABLED!", true);
+    } else {
+        SendSystemMessage("Auto-scrolling has been DISABLED!", true);
+    }
+})
+
 ipcRenderer.on("message", function (event, msg) {
     if (msg.text.includes(`[` + document.getElementById("nick").innerHTML + `]`)) {
         playAud("mention")
@@ -44,14 +62,53 @@ ipcRenderer.on("message", function (event, msg) {
         document.getElementById("messages").innerHTML += '<h3>' + msg.author + " >> " + msg.text + `</h3>`;
     }
 
-    var elem = document.getElementById('messages');
-    elem.scrollTop = elem.scrollHeight;
+    
+    if (autoscroll) {
+        var elem = document.getElementById('messages');
+        elem.scrollTop = elem.scrollHeight;
+    }
     
 });
+
+ipcRenderer.on("private-message", function (event, msg) {
+    playAud("mention")
+    document.getElementById("messages").innerHTML += '<h3 class="private-message">' + msg.author + " (PM) >> " + msg.text + `</h3>`;
+
+    if (autoscroll) {
+        var elem = document.getElementById('messages');
+        elem.scrollTop = elem.scrollHeight;
+    }
+    
+});
+
+ipcRenderer.on("command-output", function (event, msg) {
+    SendSystemMessage(msg, true)
+
+    if (autoscroll) {
+        var elem = document.getElementById('messages');
+        elem.scrollTop = elem.scrollHeight;
+    }
+});
+
+ipcRenderer.on('connected', function(event, info) {
+    SendSystemMessage('Connected successfully with nickname "' + info[0] + '".', true)
+    playAud("connected");
+
+    if (autoscroll) {
+        var elem = document.getElementById('messages');
+        elem.scrollTop = elem.scrollHeight;
+    }
+})
 
 document.getElementById("inputarea").onsubmit = function(arg) {
     console.log(document.getElementById("user_input").value)
     arg.preventDefault()
+
+    if (document.getElementById("user_input").value.startsWith("//")) {
+        ipcRenderer.send('execute-command', document.getElementById("user_input").value);
+        document.getElementById("user_input").value = "";
+        return document.getElementById("user_input").focus();
+    }
 
     // Send
     ipcRenderer.send('send--message', document.getElementById("user_input").value)
@@ -93,7 +150,7 @@ titlebar.updateMenu(menu);
 // 3. Update Titlebar text
 titlebar.updateTitle('i386.tech Chat Server');
 
-// Mention stuff
+// Tell IPC we're loaded.
+ipcRenderer.send("client_load")
 
-playAud("connected");
-    SendSystemMessage('Connected successfully with nickname "' + document.getElementById("nick").innerHTML + '".', true)
+

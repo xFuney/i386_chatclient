@@ -51,7 +51,31 @@ body {
     color:#f5cb42;
 }
 
+/* Private Message */
+.private-message {
+    color:#f5cb42;
+}
+
 /* Alert Box (displays when things are broken or you've done something bad. */
 .alert-box {
     color: #ffffff;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar-track {
+    background: #333333;
+    border-radius: 10px;
+}
+   
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #252220; 
+    border-radius: 10px;
+}
+  
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: #252220; 
 }

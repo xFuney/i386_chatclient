@@ -8,16 +8,25 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="dark_theme.css">
         <link rel="stylesheet" href="base_style.css">
+
+        <link rel="stylesheet" href="wScroll.css">
+        <script src="wScroll.js"></script>
+
+
     </head>
     <body>
         <div id="nick" style="display:none;">Anon</div>
         <div id="serverIP" style="display:none;">localhost</div>
+        <div id="currentRoom" style="display:none;">general</div>
         <div id="alerts">
 
         </div>
         <!-- credit to https://codepen.io/sajadhsm/pen/odaBdd for the styling -->
         <section class="msger">
             <main class="msger-chat" id="messages">
+                <script type="text/javascript">
+                   
+                </script>
             </main>
     
             <form class="msger-inputarea" id="inputarea">
@@ -25,7 +34,9 @@
                 <button type="submit" class="msger-send-btn">Send</button>
             </form>
         </section>
+        <script type="text/javascript" src="chat_client.js"></script>
     </body>
 
-    <script type="text/javascript" src="chat_client.js"></script>
+ 
+
 </html>
