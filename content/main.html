@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>i386 Chat Client - Main</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="dark_theme.css">
-        <link rel="stylesheet" href="base_style.css">
+<head>
+    <title>i386chat</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="base_style.css">
+</head>
 
-        <link rel="stylesheet" href="wScroll.css">
-        <script src="wScroll.js"></script>
+<body class="has-background-black-bis has-text-white">
+    <div id="nick" style="display:none;">Anon</div>
+    <div id="serverIP" style="display:none;">localhost</div>
+    <div id="currentRoom" style="display:none;">general</div>
+    <div id="alerts">
+
+    </div>
+    <section class="msger">
+        <ul class="msger-chat" id="messages"></ul>
+        <form class="msger-inputarea" id="field2">
+            <div class="field has-addons">
+                <div class="control is-expanded">
+                    <input class="input" id="m" type="text" placeholder="Type your message.." autocomplete="off">
+                </div>
+                <div class="control">
+                    <button class="button is-info">
+                        Send
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <script type="text/javascript" src="chat_client.js"></script>
+</body>
 
 
-    </head>
-    <body>
-        <div id="nick" style="display:none;">Anon</div>
-        <div id="serverIP" style="display:none;">localhost</div>
-        <div id="currentRoom" style="display:none;">general</div>
-        <div id="alerts">
-
-        </div>
-        <!-- credit to https://codepen.io/sajadhsm/pen/odaBdd for the styling -->
-        <section class="msger">
-            <main class="msger-chat" id="messages">
-                <script type="text/javascript">
-                   
-                </script>
-            </main>
-    
-            <form class="msger-inputarea" id="inputarea">
-                <input type="text" class="msger-input" placeholder="Enter your message..." id="user_input">
-                <button type="submit" class="msger-send-btn">Send</button>
-            </form>
-        </section>
-        <script type="text/javascript" src="chat_client.js"></script>
-    </body>
-
- 
 
 </html>
