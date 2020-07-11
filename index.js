@@ -48,6 +48,10 @@ function InitialiseChat(serverIP, chatWindow, nickname) {
         chatWindow.webContents.send('message', msg)
     })
 
+    socket.on('disconnect', function() {
+        chatWindow.webContents.send('connection-lost')
+    })
+
     ipc.on('send--message', function(event, arg) { 
         socket.emit('chat_message', {
             text: arg,

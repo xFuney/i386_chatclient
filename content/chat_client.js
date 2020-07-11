@@ -25,9 +25,17 @@ function playAud(type) {
     } else if ( type == "connected" ) {
         var audio = new Audio(SoundURL["SuccessfulConnection"]);
         audio.play();
+    } else if ( type == "disconnected-fatal" ) {
+        var audio = new Audio(SoundURL["ConnectionFailure"]);
+        audio.play();
     }
 }
 
+ipcRenderer.on("connection-lost", function(event, args) {
+    SendSystemMessage("Connection failure. Please restart the app.", true);
+    playAud("disconnected-fatal");
+    document.getElementById("alerts").innerHTML += `<div class="bg_blur" id="alert"><div class="alert-box"><br \><h1 class="alert_center"> Lost connection to main server - restart app. </h1><button class="alert_centerbutton" onmousedown="const { ipcRenderer, remote } = require('electron'); this.addEventListener('click', function () { ipcRenderer.send('load_relog'); remote.app.exit(); });">OK</button></div></div>`
+})
 ipcRenderer.on("message", function (event, msg) {
     if (msg.text.includes(`[` + document.getElementById("nick").innerHTML + `]`)) {
         playAud("mention")

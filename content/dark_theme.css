@@ -1,3 +1,8 @@
+/* Standard i386.tech Dark Theme */
+/* Funey, 2020 */
+
+/* FEEL FREE TO USE AS A TEMPLATE! */
+
 /* Main Body */
 body {
     background: #36393F;
@@ -41,6 +46,12 @@ body {
     box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
 }
 
+/* Mentioned message (displays when you're pinged). */
 .mentioned {
     color:#f5cb42;
+}
+
+/* Alert Box (displays when things are broken or you've done something bad. */
+.alert-box {
+    color: #ffffff;
 }

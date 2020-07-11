@@ -52,3 +52,58 @@ body {
 
     line-height: 22px;
   }
+
+  .bg_blur {
+    background: rgba(0,0,0,.7);
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1111111111;
+}
+
+.alert-box {
+    height: 100px;
+    width: 500px;
+    
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+    display: -webkit-box;
+    display: flex;
+    
+    margin: auto;
+    text-align: center;
+    overflow: hidden;
+    -webkit-box-shadow: 0 0 20px 5px rgba(21,21,21,.74);
+    box-shadow: 0 0 20px 5px rgba(21,21,21,.74);
+    background: #ff0000;
+    border-radius: 4px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.alert_center {
+	position: absolute;
+    top:25%;
+    font-size: 16px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.alert_centerbutton {
+	position: absolute;
+	top:50%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 100px;
+	height: 25px;
+}   
