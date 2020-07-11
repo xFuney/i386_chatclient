@@ -6,9 +6,9 @@
 
 // Load all required libraries
 const { app, BrowserWindow, Tray, Menu  } = require('electron')
+const ipc = require('electron').ipcMain;
 
 const io = require('socket.io-client')
-const ipc = require('electron').ipcMain
 
 // Initialise globals.
 var tray;
@@ -40,6 +40,7 @@ function InitialiseChat(serverIP, chatWindow, nickname) {
     socket.on('connect', function() {
         console.log("Successfully connected.");
         socket.emit("nickname_selection", nickname);
+        chatWindow.webContents.send('connected')
     })
 
     socket.on('chat_message', function(msg) {
@@ -63,6 +64,7 @@ function CreateLoginWindow() {
         height: 350,
         frame: false,
         resizable: false,
+        icon: 'content\\main.ico',
         webPreferences: {
             nodeIntegration: true
         }
@@ -78,6 +80,7 @@ function CreateMainWindow() {
         width: 800,
         height: 600,
         frame: false,
+        icon: 'content\\main.ico',
         webPreferences: {
             nodeIntegration: true
         }
@@ -86,12 +89,12 @@ function CreateMainWindow() {
     mainWindow.loadFile("./content/main.html");
 
     let UserHostname = "funeytest";
+    let ServerIP = "https://chat.i386.tech"
+    
     // Initialise server instance.
     InitialiseChat("https://chat.i386.tech", mainWindow, UserHostname);
 
     mainWindow.webContents.on('did-finish-load', ()=>{
-        
-        let ServerIP = "https://chat.i386.tech"
         let code = `document.getElementById("nick").innerHTML = "` + UserHostname + `"; document.getElementById("serverIP").innerHTML = "` + ServerIP + `"; `;
         mainWindow.webContents.executeJavaScript(code);
     });

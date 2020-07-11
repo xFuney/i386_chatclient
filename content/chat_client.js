@@ -1,18 +1,29 @@
 // Chat Client Controlling JS
 // Woot.
 
-var ipcRenderer = require("electron").ipcRenderer;
 var remote = require("electron").remote;
+var ipcRenderer = require("electron").ipcRenderer;
 
 var SoundURL = {
     "WasMentioned": "https://i386.tech/juntos.mp3",
-    "SuccessfulConnection": "OpenSFX.wav",
-    "ConnectionFailure": "FailSFX.wav"
+    "SuccessfulConnection": "./OpenSFX.wav",
+    "ConnectionFailure": "./FailSFX.wav"
+}
+
+function SendSystemMessage(message, soundSuppresed) {
+    document.getElementById("messages").innerHTML += '<h3 class="sys_msg">' + message + `</h3>`;
+
+    if (!soundSuppresed) {
+        playAud("SystemMessage")
+    }
 }
 
 function playAud(type) {
     if ( type == "mention" ) {
         var audio = new Audio(SoundURL["WasMentioned"]);
+        audio.play();
+    } else if ( type == "connected" ) {
+        var audio = new Audio(SoundURL["SuccessfulConnection"]);
         audio.play();
     }
 }
@@ -25,6 +36,8 @@ ipcRenderer.on("message", function (event, msg) {
         document.getElementById("messages").innerHTML += '<h3>' + msg.author + " >> " + msg.text + `</h3>`;
     }
 
+    var elem = document.getElementById('messages');
+    elem.scrollTop = elem.scrollHeight;
     
 });
 
@@ -73,3 +86,6 @@ titlebar.updateMenu(menu);
 titlebar.updateTitle('i386.tech Chat Server');
 
 // Mention stuff
+
+playAud("connected");
+    SendSystemMessage('Connected successfully with nickname "' + document.getElementById("nick").innerHTML + '".', true)

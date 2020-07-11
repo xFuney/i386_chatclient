@@ -29,8 +29,11 @@ body {
 
   .msger-chat {
     flex: 1;
-    overflow-y: auto;
+    overflow-y: hidden; /* TODO: Implement more stylised scrollbar */
     padding: 10px;
+    display: inline-block;
+    width: 100%;
+    max-width: calc(100% - 32px);
   }
 
   .msger {
@@ -47,5 +50,5 @@ body {
     top: 0;
     left: 0;
 
-    line-height: 5px;
+    line-height: 22px;
   }

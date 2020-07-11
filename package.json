@@ -37,6 +37,9 @@
     "mac": {
       "category": "public.app-category.social-networking"
     },
+    "win": {
+      "icon": "build/main.ico"
+    },
     "files": [
       "**/*",
       "build"
