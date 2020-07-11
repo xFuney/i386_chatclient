@@ -25,7 +25,7 @@ let config = {
     serverIP: "https://chat.i386.tech",
     bio: "I am a i386chat user."
 };
-const ignored = [];
+let ignored = [];
 
 let configDir = process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + "/.local/share")
 if (fs.existsSync(path.join(configDir, "/i386chat_config.json"))) {
