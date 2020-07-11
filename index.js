@@ -1,4 +1,4 @@
-ed:// I'm gonna kill myself for doing this, probably
+ed:ed:// I'm gonna kill myself for doing this, probably
 'use strict';
 
 // Chat Client Entry Point
@@ -123,7 +123,7 @@ var commands = [{
         "execute": function (args, chatWindow, socket) {
             if (!args[1]) return chatWindow.webContents.send('command-output', "Usage: //ignore <id>")
 
-            if (ignored.includes(""+args.join(" "))) {
+            if (ignored.includes(""+args.slice(1).join(" "))) {
                 ignored = arrayRemove(ignored, args.slice(1).join(" "));
                 chatWindow.webContents.send('command-output',
                     "Removed " + args.slice(1).join(" ") + " from the ignored list.");
