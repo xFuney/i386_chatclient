@@ -1,115 +1,301 @@
 /* credit to https://codepen.io/sajadhsm/pen/odaBdd for the styling */
 
-body {
-    display: block;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
+/* A fucking mess, I know, blame me - zer0 */
+@webkit-keyframes rainbowk {
+
+  100%,
+  0% {
+    color: rgb(255, 0, 0);
+  }
+
+  8% {
+    color: rgb(255, 127, 0);
+  }
+
+  16% {
+    color: rgb(255, 255, 0);
+  }
+
+  25% {
+    color: rgb(127, 255, 0);
+  }
+
+  33% {
+    color: rgb(0, 255, 0);
+  }
+
+  41% {
+    color: rgb(0, 255, 127);
+  }
+
+  50% {
+    color: rgb(0, 255, 255);
+  }
+
+  58% {
+    color: rgb(0, 127, 255);
+  }
+
+  66% {
+    color: rgb(0, 0, 255);
+  }
+
+  75% {
+    color: rgb(127, 0, 255);
+  }
+
+  83% {
+    color: rgb(255, 0, 255);
+  }
+
+  91% {
+    color: rgb(255, 0, 127);
+  }
 }
 
-.msger-inputarea {
-    display: flex;
-    padding: 10px;
-    border-top: var(--border);
-  }
-  .msger-inputarea * {
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    font-size: 1em;
-  }
-  .msger-input {
-    flex: 1;
-  }
-  .msger-send-btn {
-    margin-left: 10px;
-    cursor: pointer;
-    transition: background 0.23s;
+@ms-keyframes rainbowk {
+
+  100%,
+  0% {
+    color: rgb(255, 0, 0);
   }
 
-  .msger-chat {
-    flex: 1;
-    overflow-y: scroll; /* TODO: Implement more stylised scrollbar */
-    overflow-x: hidden;
-    padding: 10px;
-    display: inline-block;
-    width: 100%;
-    max-width: calc(100% - 24px);
+  8% {
+    color: rgb(255, 127, 0);
   }
 
-  .msger {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: space-between;
-    width: 100%;
-    max-width: calc(100% - 28px);
-    margin: 10px;
-
-    height: 100%;
-    max-height: calc(100% - 32px);
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    line-height: 22px;
+  16% {
+    color: rgb(255, 255, 0);
   }
 
-  .bg_blur {
-    background: rgba(0,0,0,.7);
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 1111111111;
+  25% {
+    color: rgb(127, 255, 0);
+  }
+
+  33% {
+    color: rgb(0, 255, 0);
+  }
+
+  41% {
+    color: rgb(0, 255, 127);
+  }
+
+  50% {
+    color: rgb(0, 255, 255);
+  }
+
+  58% {
+    color: rgb(0, 127, 255);
+  }
+
+  66% {
+    color: rgb(0, 0, 255);
+  }
+
+  75% {
+    color: rgb(127, 0, 255);
+  }
+
+  83% {
+    color: rgb(255, 0, 255);
+  }
+
+  91% {
+    color: rgb(255, 0, 127);
+  }
+}
+
+.mentioned {
+  border-radius: 1.2px;
+  background-color: #f5cb42;
+  color: black;
+}
+
+@keyframes rainbowk {
+
+  100%,
+  0% {
+    color: rgb(255, 0, 0);
+  }
+
+  8% {
+    color: rgb(255, 127, 0);
+  }
+
+  16% {
+    color: rgb(255, 255, 0);
+  }
+
+  25% {
+    color: rgb(127, 255, 0);
+  }
+
+  33% {
+    color: rgb(0, 255, 0);
+  }
+
+  41% {
+    color: rgb(0, 255, 127);
+  }
+
+  50% {
+    color: rgb(0, 255, 255);
+  }
+
+  58% {
+    color: rgb(0, 127, 255);
+  }
+
+  66% {
+    color: rgb(0, 0, 255);
+  }
+
+  75% {
+    color: rgb(127, 0, 255);
+  }
+
+  83% {
+    color: rgb(255, 0, 255);
+  }
+
+  91% {
+    color: rgb(255, 0, 127);
+  }
+}
+
+
+.rainbow {
+  -webkit-animation: rainbowk 5s infinite;
+  -ms-animation: rainbowk 5s infinite;
+  animation: rainbowk 5s infinite;
+}
+
+
+
+strong {
+  color: white;
+}
+
+body {
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+* {
+  background-color: black;
+
+}
+
+.msger-inputarea {}
+
+.msger-inputarea * {}
+
+.msger-input {}
+
+.msger-send-btn {}
+
+.msger-chat {
+  flex: 1;
+  overflow-y: scroll;
+  /* TODO: Implement more stylised scrollbar */
+  overflow-x: hidden;
+  padding: 10px;
+  display: inline-block;
+  width: 100%;
+  max-width: calc(100% - 24px);
+  background-color: black;
+  margin-bottom: 15px;
+}
+
+.msger {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  width: 100%;
+  max-width: calc(100% - 28px);
+
+  height: 100%;
+  max-height: calc(100% - 32px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+
+  line-height: 22px;
+}
+
+
+form {
+  background: #000;
+  padding: 3px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.c {
+  width: 100%;
+}
+
+.bg_blur {
+  background: rgba(0, 0, 0, .7);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1111111111;
 }
 
 .alert-box {
-    height: 100px;
-    width: 500px;
-    
-	position: absolute;
-	top:0;
-	bottom: 0;
-	left: 0;
-	right: 0;
+  height: 100px;
+  width: 500px;
 
-    display: -webkit-box;
-    display: flex;
-    
-    margin: auto;
-    text-align: center;
-    overflow: hidden;
-    -webkit-box-shadow: 0 0 20px 5px rgba(21,21,21,.74);
-    box-shadow: 0 0 20px 5px rgba(21,21,21,.74);
-    background: #ff0000;
-    border-radius: 4px;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: -webkit-box;
+  display: flex;
+
+  margin: auto;
+  text-align: center;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 20px 5px rgba(21, 21, 21, .74);
+  box-shadow: 0 0 20px 5px rgba(21, 21, 21, .74);
+  background: #ff0000;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 .alert_center {
-	position: absolute;
-    top:25%;
-    font-size: 16px;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	margin: auto;
+  position: absolute;
+  top: 25%;
+  font-size: 16px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 .alert_centerbutton {
-	position: absolute;
-	top:50%;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	margin: auto;
-	width: 100px;
-	height: 25px;
-}   
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100px;
+  height: 25px;
+}
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 0px;
 }
