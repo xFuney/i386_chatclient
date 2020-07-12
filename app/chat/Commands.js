@@ -1,6 +1,6 @@
 'use strict';
 
-// This script is usually called by the ChatManager, we handle commands here.
+// This script is usually called by the ChatManager script, we handle commands here.
 // Nothing else should really call this, as there'd be no point.
 
 // Get user configuration
