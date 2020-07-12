@@ -1,0 +1,81 @@
+/* Standard i386.tech Dark Theme */
+/* Funey, 2020 */
+
+/* FEEL FREE TO USE AS A TEMPLATE! */
+
+/* Main Body */
+body {
+    background: #36393F;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Input area bounding box (bottom, behind input options) */
+.msger-inputarea {
+    background: #525760;
+}
+
+/* Text input box */
+.msger-input {
+    background: #40444b;
+    color: #ffffff;
+}
+
+/* Send message button */
+.msger-send-btn {
+    background: #6a707c;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Send message button (style when hovered over) */
+.msger-send-btn:hover {
+    background: #7e8591;
+}
+
+/* Actual chat area */
+.msger-chat {
+    background: #494d55;
+    color: #ffffff;
+}
+
+/* Applies to the entire page (minus main background) */
+.msger {
+    background: #494d55;
+    border: 3px solid #494d55;
+    border-radius: 5px;
+    box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Mentioned message (displays when you're pinged). */
+.mentioned {
+    color:#f5cb42;
+}
+
+/* Private Message */
+.private-message {
+    color:#f5cb42;
+}
+
+/* Alert Box (displays when things are broken or you've done something bad. */
+.alert-box {
+    color: #ffffff;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar-track {
+    background: #333333;
+    border-radius: 10px;
+}
+   
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #252220; 
+    border-radius: 10px;
+}
+  
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: #252220; 
+}
