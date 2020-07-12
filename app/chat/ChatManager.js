@@ -18,6 +18,10 @@ const UserConfig = GlobalSettings.read();
 // Initialise handler for commands.
 const Commands = require('./Commands');
 
+// Initialise handler for IPC calls (ipcMain).
+
+const IPC = require('../ipcMain')
+
 // Initialise socket library.
 const io = require('socket.io-client')
 
@@ -76,63 +80,7 @@ function ChangeMainTheme( path, ChatWindow ) {
 
 // We need to throw every non-global variable at the IPC handler for proper initialisation...
 
-// TODO: Maybe move this to an external IPC handler script(?)
-function IPCHandlingInit(socket, ServerIP, ChatWindow, Username) {
-    console.log("[CHAT_MANAGER] Initialising IPC events for client communication.")
-    // TODO: Refactor every IPC call event.
-    ipc.on('execute-command', function (event, arg) {
-        Commands.ParseAndExecuteCmd(socket, ChatWindow, arg)
-    })
 
-    ipc.on('change-theme', function (event, arg) {
-        if ( arg == "base" ) {
-            // Client wants to change the base theme.
-            dialog.showOpenDialog({
-                properties: ['openFile']
-              }).then(result => {
-                if ( result.cancelled ) return;
-
-                // Now let another function handle it.
-                ChangeBaseTheme(result.filePaths[0], ChatWindow)
-              }).catch(err => {
-                console.log(err)
-              });
-
-        } else if ( arg == "theme" ) {
-            // Client wants to change the styling theme.
-            dialog.showOpenDialog({
-                properties: ['openFile']
-              }).then(result => {
-                if ( result.cancelled ) return;
-
-                // Now let another function handle it.
-                ChangeMainTheme(result.filePaths[0], ChatWindow)
-              }).catch(err => {
-                console.log(err)
-              });
-        }
-    })
-
-    ipc.on("client_load", function (event, arg) {
-        ChatWindow.webContents.send('connected', [Username, ServerIP])
-    })
-
-    ipc.on('send--message', function (event, arg) {
-        socket.emit('chat_message', {
-            text: arg,
-            author: Username
-        });
-    })
-    ipc.on('appQuit', function (event, arg) {
-        console.log("[CHAT_MANAGER] IPC Quit event fired. Shutting down application.")
-
-        console.log("[CHAT_MANAGER] Disconnecting socket and nullifying.")
-        socket.disconnect();
-        socket = null;
-        console.log("[CHAT_MANAGER] Forcing application exit. Goodbye.")
-        app.quit();
-    })
-}
 
 module.exports.init = function(ServerIP, ChatWindow, Username) {
     // When this is executed, the Interface has opened the main chat page.
@@ -146,7 +94,7 @@ module.exports.init = function(ServerIP, ChatWindow, Username) {
     });
 
     // Initialise IPC calls.
-    IPCHandlingInit(socket, ServerIP, ChatWindow, Username);
+    IPC.init(socket, ServerIP, ChatWindow, Username);
 
     socket.on('connect', function () {
         // Let console know we've connected.

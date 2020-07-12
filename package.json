@@ -25,6 +25,7 @@
   "dependencies": {
     "css-minify": "^1.0.1",
     "custom-electron-titlebar": "^3.2.2-hotfix62",
+    "devtron": "^1.4.0",
     "node-notifier": "^7.0.1",
     "socket.io-client": "^2.3.0",
     "uglifycss": "0.0.29"

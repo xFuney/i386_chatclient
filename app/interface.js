@@ -11,6 +11,9 @@ const ipc = require('electron').ipcMain;
 const GlobalSettings = require('../common/Settings');
 const UserConfig = GlobalSettings.read()
 
+// Stuff for initialising development tools.
+const DevTools = require('./inst_devTools')
+
 // File system manipulation.
 const fs = require('fs');
 const path = require("path");
@@ -39,6 +42,12 @@ function CreateMainWindow() {
     console.log("[INTERFACE] Loading client display (you should now see the UI).")
     mainWindow.loadFile("./app/rendererProc/main_client.html");
 
+    // Install Developer Tools
+
+    // TODO: Find alternative to Devtron OR fix Devtron source.
+    //DevTools.installDevTools();
+
+    // Load up some local variables for easier management.
     let UserHostname = CurrentConfig.username;
     let ServerIP = CurrentConfig.serverIP;
 

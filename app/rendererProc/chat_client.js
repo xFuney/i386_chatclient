@@ -90,6 +90,7 @@ ipcRenderer.on("command-output", function (event, msg) {
         elem.scrollTop = elem.scrollHeight;
     }
 });
+
 ipcRenderer.on('user_join', function (event, info) {
     document.getElementById("messages").innerHTML += info.text + "<br>";
 
@@ -142,14 +143,19 @@ menu.append(new remote.MenuItem({
         label: 'About',
         click: () => alert("i386chat, written by xFuney and zer0.")
     }, {
+        label: 'Quit',
+        click: () => ipcRenderer.send("appQuit")
+    }]
+}));
+
+menu.append(new remote.MenuItem({
+    label: 'Themes',
+    submenu: [{
         label: 'Set Base Style',
         click: () => changeTheme("base")
     },  {
         label: 'Set Theme',
         click: () => changeTheme("theme")
-    }, {
-        label: 'Quit',
-        click: () => ipcRenderer.send("appQuit")
     }]
 }));
 
