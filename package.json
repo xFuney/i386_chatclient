@@ -20,7 +20,7 @@
   "homepage": "https://github.com/xFuney/i386_chatclient#readme",
   "devDependencies": {
     "custom-electron-titlebar": "^3.2.2-hotfix62",
-    "electron": "^9.3.1",
+    "electron": "^15.5.5",
     "electron-builder": "^22.7.0",
     "jquery": "^3.5.1",
     "node-notifier": "^7.0.1",
